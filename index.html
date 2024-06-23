@@ -26,7 +26,7 @@
             margin-bottom: 20px;
         }
         .download-button {
-            display: inline-block;
+            display: none; /* initially hidden */
             padding: 10px 20px;
             margin: 10px;
             font-size: 16px;
@@ -40,16 +40,36 @@
         .download-button:hover {
             background-color: #0056b3;
         }
+        .password-container {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Adventure Maps</h1>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Passwort eingeben">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
         <div id="downloads">
-            <a href="assets/Adventure-map-V1.zip" download="Adventure-map-V1.zip" class="download-button">
+            <a href="assets/Adventure-map-V1.zip" download="Adventure-map-V1.zip" class="download-button" id="downloadButton">
                 Download Adventure-map-V1.zip
             </a>
         </div>
     </div>
+
+    <script>
+        function checkPassword() {
+            const correctPassword = 'Qo290-dr9vvn-298tng'; // Set the correct password here
+            const enteredPassword = document.getElementById('password').value;
+            if (enteredPassword === correctPassword) {
+                document.getElementById('downloadButton').style.display = 'inline-block';
+                document.querySelector('.password-container').style.display = 'none';
+            } else {
+                alert('Falsches Passwort');
+            }
+        }
+    </script>
 </body>
 </html>
